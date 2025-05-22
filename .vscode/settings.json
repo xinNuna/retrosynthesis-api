@@ -1,0 +1,12 @@
+{
+    "python.analysis.extraPaths": [
+        "./Graph2Edits-master",
+        "./LocalRetro",
+        "./LocalRetro/scripts",
+        "./LocalRetro/scripts",
+        "./Condition_Predictor_main",
+        "./Condition_Predictor_main/Reaction_Condition_Selector_main",
+        "./Egret-main",
+        "./Egret-main/inference"
+    ]
+}
