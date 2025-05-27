@@ -1,0 +1,32 @@
+# 排除大型数据和模型文件
+*.csv
+*.zip
+*.pt
+*.pth
+*.pkl
+*.bin
+*.h5
+*.ckpt
+*.model
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# 排除整个大型目录但保留API相关文件
+Condition_Predictor_main/*
+!/Condition_Predictor_main/reaction_predictor.py
+
+Graph2Edits-master/*
+!/Graph2Edits-master/api/
+/Graph2Edits-master/api/*model*
+/Graph2Edits-master/api/*data*
+
+LocalRetro/*
+!/LocalRetro/scripts/
+/LocalRetro/scripts/*.pt
+/LocalRetro/scripts/*.pth
+/LocalRetro/scripts/*.model
+
+Egret-main/*
+!/Egret-main/inference/
+/Egret-main/inference/*model*/pytorch_model.bin

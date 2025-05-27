@@ -3,36 +3,29 @@
 """
 import sys
 import os
-
 # 设置导入路径
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 CODE_DIR = os.path.dirname(CURRENT_DIR)  # 指向 code 文件夹
 sys.path.append(CODE_DIR)
-
 # 导入所需模块
 from ErrorCodes import ErrorCode
 from ReactionData import Reactant, ReactionData
 from API import SemiTemplateRetrosynthesis
 
-
 def test_semi_template(product_smiles: str, rxn_class: int = None, try_all_classes: bool = True) -> ErrorCode:
     """
     测试半模板逆合成预测
-    
     参数:
         product_smiles: 产物SMILES
         rxn_class: 反应类别
         try_all_classes: 是否尝试所有反应类别
-        
     返回:
         状态码
     """
     results = []
-    
     print(f"\n===== 测试半模板逆合成 =====")
     print(f"产物: {product_smiles}")
     print(f"参数: rxnClass={rxn_class}, tryAllClasses={try_all_classes}")
-    
     # 调用半模板逆合成预测函数
     returnCode = SemiTemplateRetrosynthesis(
         productSmiles=product_smiles,
@@ -75,10 +68,10 @@ def print_results(returnCode: ErrorCode, results):
 
 def main():
     """主函数，运行所有测试"""
-    # 测试用例 - 咖啡因
+    #测试用例 - 咖啡因
     caffeine = "CN1C=NC2=C1C(=O)N(C(=O)N2C)C"
     
-    # 测试用例 - 可能生成多个反应物的化合物
+    #测试用例 - 可能生成多个反应物的化合物
     benzyl_phenyl_ether = "c1ccccc1OCc2ccccc2"  # 苄基苯基醚
     biphenyl = "c1ccccc1-c2ccccc2"  # 联苯
     ethyl_benzoate = "CCOC(=O)c1ccccc1"  # 苯甲酸乙酯
@@ -88,13 +81,13 @@ def main():
     print("====================================================")
     
     # 测试1: 半模板法 - 指定反应类别
-    test_semi_template(caffeine, rxn_class=7, try_all_classes=False)
+    #test_semi_template(caffeine, rxn_class=7, try_all_classes=False)
     
     # 测试2: 半模板法 - 尝试所有反应类别
     test_semi_template(biphenyl, rxn_class=None, try_all_classes=True)
     
     # 测试3: 半模板法 - 错误情况(未指定反应类别且不尝试所有类别)
-    test_semi_template(benzyl_phenyl_ether, rxn_class=None, try_all_classes=False)
+    #test_semi_template(benzyl_phenyl_ether, rxn_class=None, try_all_classes=False)
 
 
 if __name__ == "__main__":
