@@ -30,3 +30,10 @@ LocalRetro/*
 Egret-main/*
 !/Egret-main/inference/
 /Egret-main/inference/*model*/pytorch_model.bin
+# Large data files
+*.csv
+*.json
+*.zip
+*.bin
+*checkpoint*
+Condition_Predictor_main/Reaction_Condition_Selector_main/data/
