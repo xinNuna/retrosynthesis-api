@@ -28,7 +28,7 @@ except ImportError:
 RDLogger.logger().setLevel(RDLogger.CRITICAL)
 
 # 全局变量
-DEVICE = "cuda" if torch.cuda.is_available() else "cpu"
+DEVICE = "cuda:3" if torch.cuda.is_available() else "cpu"
 DEFAULT_MAX_STEPS = 9
 DEFAULT_BEAM_SIZE = 10
 DEFAULT_TOP_K = 5

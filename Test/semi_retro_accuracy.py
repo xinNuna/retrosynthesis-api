@@ -10,7 +10,6 @@ sys.path.append(CODE_DIR)
 from ErrorCodes import ErrorCode
 from ReactionData import Reactant, ReactionData
 from API import SemiTemplateRetrosynthesis
-
 import re
 
 def normalize_smiles_set(smiles_str: str) -> set:
@@ -29,7 +28,6 @@ def evaluate_top5_accuracy(csv_path: str) -> float:
     data = pd.read_excel(csv_path)
     total = 0
     correct = 0
-
     for idx, row in tqdm(data.iterrows(), total=len(data)):
         product = row["products"]
         true_reactants = normalize_smiles_set(row["reactants"])
