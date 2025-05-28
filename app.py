@@ -502,14 +502,22 @@ def predict_reaction_yield():
         }), 500
 
 # 主函数
+
+
 if __name__ == '__main__':
     # 主程序入口
     print("启动Flask API服务器...")
     
+    # 设置环境变量避免多进程问题
+    os.environ['OMP_NUM_THREADS'] = '1'
+    os.environ['MKL_NUM_THREADS'] = '1'
+    os.environ['NUMEXPR_NUM_THREADS'] = '1'
+    
     # 获取服务器运行配置
     host = os.environ.get('API_HOST', '0.0.0.0')  # 默认绑定到所有网络接口
     port = int(os.environ.get('API_PORT', 5000))  # 默认端口5000
-    debug = os.environ.get('API_DEBUG', 'False').lower() == 'true'  # 默认不开启调试模式
+    debug = False  # 关闭调试模式以避免多进程问题
     
     print(f"服务器将监听在 {host}:{port}")
-    app.run(host=host, port=port, debug=debug)
+    # 关键：使用单线程模式
+    app.run(host=host, port=port, debug=debug, threaded=False, processes=1)
